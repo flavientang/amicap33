@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://amicap33.org">
+    <title>AMICAP33 - L'amitié autour du handicap</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #FF6584;
+            --accent-color: #4CAF50;
+            --text-color: #333333;
+            --bg-color: #F0F8FF;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #E6F3FF, #F0F8FF, #E6F3FF);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background-color: rgba(108, 99, 255, 0.9);
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+            nav ul {
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                nav ul li {
+                    margin: 0 15px;
+                }
+
+                    nav ul li a {
+                        color: white;
+                        text-decoration: none;
+                        font-weight: 600;
+                        font-size: 0.9em;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    }
+
+                        nav ul li a::after {
+                            content: '';
+                            position: absolute;
+                            width: 0;
+                            height: 2px;
+                            bottom: -5px;
+                            left: 0;
+                            background-color: var(--secondary-color);
+                            transition: width 0.3s ease;
+                        }
+
+                        nav ul li a:hover::after {
+                            width: 100%;
+                        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .logo-container img {
+                width: 40px;
+                height: auto;
+                margin-right: 10px;
+            }
+
+        .logo-text {
+            color: white;
+            font-size: 1.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .slogan {
+            color: white;
+            font-size: 0.8em;
+            font-style: italic;
+            margin-left: 10px;
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('https://websim.ai/c/hero-pattern.svg') repeat;
+                opacity: 0.1;
+                animation: moveBackground 20s linear infinite;
+            }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p.slogan {
+            font-size: 3em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: both;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .hero p.description {
+            font-size: 2em;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: both;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.6s;
+            animation-fill-mode: both;
+        }
+
+            .cta-button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+                transition: all 0.5s;
+            }
+
+            .cta-button:hover::before {
+                left: 100%;
+            }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+
+        .section {
+            padding: 80px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+            .section-title::after {
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: var(--secondary-color);
+                margin: 15px auto 0;
+            }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+            .card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .card:hover::before {
+                opacity: 0.1;
+            }
+
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            }
+
+            .card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                transition: all 0.3s ease;
+            }
+
+            .card:hover img {
+                transform: scale(1.1);
+            }
+
+        .card-content {
+            padding: 25px;
+        }
+
+            .card-content h3 {
+                color: var(--primary-color);
+                margin-bottom: 15px;
+                font-size: 1.3em;
+            }
+
+        .team-member {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+            .team-member:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            }
+
+            .team-member img {
+                border-radius: 50%;
+                margin-right: 20px;
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+            }
+
+            .team-member h3 {
+                color: var(--primary-color);
+                margin-bottom: 5px;
+                font-size: 1.2em;
+            }
+
+            .team-member p {
+                font-size: 1em;
+                color: var(--text-color);
+                margin-bottom: 5px;
+            }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+            footer .social-icons {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+                footer .social-icons a {
+                    color: white;
+                    font-size: 1.5em;
+                    margin: 0 10px;
+                    transition: color 0.3s ease;
+                }
+
+                    footer .social-icons a:hover {
+                        color: var(--secondary-color);
+                    }
+
+            footer p {
+                font-size: 1em;
+                margin-bottom: 10px;
+            }
+
+            footer a {
+                color: var(--secondary-color);
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li class="logo-container">
+                    <img src="https://amicap33.org/logo.png" alt="Logo de AMICAP33">
+                    <span class="logo-text">AMICAP33</span>
+                    <span class="slogan">L'amitié autour du handicap</span>
+                </li>
+                <li><a href="#services">Nos Services</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#team">L'équipe</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Bienvenue chez AMICAP33</h1>
+        <p class="slogan">L'amitié autour du handicap</p>
+        <p class="description">Ensemble, construisons un monde plus inclusif et solidaire pour toutes les personnes en situation de handicap.</p>
+        <a href="#services" class="cta-button">Découvrir nos services</a>
+    </section>
+
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://amicap33.org/services/accompagnement.jpg" alt="Service d'accompagnement">
+                    <div class="card-content">
+                        <h3>Accompagnement Personnalisé</h3>
+                        <p>Nous offrons un service d'accompagnement personnalisé pour aider les personnes en situation de handicap à surmonter les défis quotidiens.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://amicap33.org/services/formation.jpg" alt="Service de formation">
+                    <div class="card-content">
+                        <h3>Formation et Sensibilisation</h3>
+                        <p>Nos sessions de formation visent à sensibiliser le public et à promouvoir l'inclusion des personnes en situation de handicap.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://amicap33.org/services/conseil.jpg" alt="Service de conseil">
+                    <div class="card-content">
+                        <h3>Conseil et Assistance</h3>
+                        <p>Nous fournissons des services de conseil et d'assistance pour guider les familles et les individus dans leurs démarches administratives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">À propos de Nous</h2>
+            <p>AMICAP33 est une association dédiée à l'inclusion des personnes en situation de handicap. Nous croyons en la force de la communauté et de l'amitié pour créer un monde plus juste et équitable.</p>
+        </div>
+    </section>
+
+    <section class="section" id="team">
+        <div class="container">
+            <h2 class="section-title">Notre Équipe</h2>
+            <div class="grid">
+                <div class="team-member">
+                    <img src="https://amicap33.org/team/member1.jpg" alt="Membre de l'équipe 1">
+                    <div>
+                        <h3>Jean Dupont</h3>
+                        <p>Président</p>
+                        <p>Jean est le fondateur de l'association et travaille sans relâche pour promouvoir l'inclusion des personnes handicapées.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://amicap33.org/team/member2.jpg" alt="Membre de l'équipe 2">
+                    <div>
+                        <h3>Marie Curie</h3>
+                        <p>Directrice des opérations</p>
+                        <p>Marie coordonne nos actions sur le terrain et s'assure que chaque projet est mené à bien.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://amicap33.org/team/member3.jpg" alt="Membre de l'équipe 3">
+                    <div>
+                        <h3>Luc Martin</h3>
+                        <p>Responsable de la communication</p>
+                        <p>Luc est en charge de la communication et des relations publiques de l'association.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/amicap33" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/amicap33" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/amicap33" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/amicap33" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2024 AMICAP33. Tous droits réservés.</p>
+            <p>Site web conçu par <a href="https://amicap33.org">AMICAP33</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
